@@ -1,0 +1,23 @@
+{
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "ignore": [
+    "api/routes/*.js",
+    "api/controllers/*.js",
+    "api/models/*.js",
+    "api/middleware/*.js"
+  ]
+}
