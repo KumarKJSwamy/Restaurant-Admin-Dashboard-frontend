@@ -13,11 +13,5 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ],
-  "ignore": [
-    "api/routes/*.js",
-    "api/controllers/*.js",
-    "api/models/*.js",
-    "api/middleware/*.js"
   ]
 }
