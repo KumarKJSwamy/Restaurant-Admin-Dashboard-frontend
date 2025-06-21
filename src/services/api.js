@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
+const API_URL = 'https://restaurant-admin-dashboard-backend.vercel.app/api';
 
 // Create axios instance
 const api = axios.create({
@@ -46,18 +46,18 @@ export const authAPI = {
 
 // Menu API
 export const menuAPI = {
-  getAll: () => axios.get(`${API_URL}/menu`),
-  create: (data) => axios.post(`${API_URL}/menu`, data),
-  update: (id, data) => axios.put(`${API_URL}/menu/${id}`, data),
-  delete: (id) => axios.delete(`${API_URL}/menu/${id}`)
+  getAll: () => api.get('/menu'),
+  create: (data) => api.post('/menu', data),
+  update: (id, data) => api.put(`/menu/${id}`, data),
+  delete: (id) => api.delete(`/menu/${id}`)
 };
 
 // Category API
 export const categoryAPI = {
-  getAll: () => axios.get(`${API_URL}/categories`),
-  create: (data) => axios.post(`${API_URL}/categories`, data),
-  update: (id, data) => axios.put(`${API_URL}/categories/${id}`, data),
-  delete: (id) => axios.delete(`${API_URL}/categories/${id}`)
+  getAll: () => api.get('/categories'),
+  create: (data) => api.post('/categories', data),
+  update: (id, data) => api.put(`/categories/${id}`, data),
+  delete: (id) => api.delete(`/categories/${id}`)
 };
 
 // Orders API

@@ -9,17 +9,15 @@ import {
   Alert,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { authAPI } from '../services/api';
 import { toast } from 'react-toastify';
 
-const Register = () => {
+const Login = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-  console.log(process.env.REACT_APP_API_BASE_URL, "API_URL");
-  const API_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:5000/api';
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -41,17 +39,7 @@ const Register = () => {
     console.log('Payload being sent:', formData);
 
     try {
-      // You can also explicitly create the payload object
-      const payload = {
-        email: formData.email,
-        password: formData.password
-      };
-
-      const response = await axios.post(`${API_URL}/auth/login`, payload, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
+      const response = await authAPI.login(formData);
 
       if (response.data.success) {
         localStorage.setItem('token', response.data.data.token);
@@ -88,7 +76,7 @@ const Register = () => {
           }}
         >
           <Typography component="h1" variant="h5" gutterBottom>
-            Register
+            Login
           </Typography>
           {error && (
             <Alert severity="error" sx={{ width: '100%', mb: 2 }}>
@@ -142,4 +130,4 @@ const Register = () => {
   );
 };
 
-export default Register; 
+export default Login; 
