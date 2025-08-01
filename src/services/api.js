@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://restaurant-backend.ap-south-1.elasticbeanstalk.com/api';
+const API_URL = 'http://restaurant-backend.ap-south-1.elasticbeanstalk.com/api';
 
 // Create axios instance
 const api = axios.create({
