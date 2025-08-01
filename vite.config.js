@@ -9,7 +9,16 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          mui: ['@mui/material', '@mui/icons-material', '@mui/x-data-grid', '@mui/x-date-pickers'],
+          router: ['react-router-dom', 'react-router'],
+        },
+      },
+    },
   },
   esbuild: {
     loader: 'jsx',
@@ -17,6 +26,7 @@ export default defineConfig({
     exclude: [],
   },
   optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom'],
     esbuildOptions: {
       loader: {
         '.js': 'jsx',
