@@ -107,11 +107,11 @@ function App() {
           <Route
             path="/"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Layout>
                   <Dashboard />
                 </Layout>
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
