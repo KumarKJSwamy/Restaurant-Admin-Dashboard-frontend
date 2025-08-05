@@ -117,81 +117,81 @@ function App() {
           <Route
             path="/menu-management"
             element={
-              <ProtectedRoute requireAdmin>
+              // <ProtectedRoute requireAdmin>
                 <Layout>
                   <MenuManagement />
                 </Layout>
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/inventory"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Layout>
                   <Inventory />
                 </Layout>
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/order-management"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Layout>
                   <OrderManagement />
                 </Layout>
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/table-reservation"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Layout>
                   <TableReservation />
                 </Layout>
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/employee-management"
             element={
-              <ProtectedRoute requireAdmin>
+              // <ProtectedRoute requireAdmin>
                 <Layout>
                   <EmployeeManagement />
                 </Layout>
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/hotel-gallery"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Layout>
                   <HotelGallery />
                 </Layout>
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/reports"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Layout>
                   <Reports />
                 </Layout>
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/kitchen-display"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Layout>
                   <KitchenDisplay />
                 </Layout>
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
