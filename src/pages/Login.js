@@ -39,7 +39,9 @@ const Login = () => {
     console.log('Payload being sent:', formData);
 
     try {
+      console.log('Making login request...');
       const response = await authAPI.login(formData);
+      console.log('Login response:', response);
 
       if (response.data.success) {
         localStorage.setItem('token', response.data.data.token);
@@ -48,8 +50,25 @@ const Login = () => {
         navigate('/');
       }
     } catch (error) {
-      setError(error.response?.data?.message || 'Login failed');
-      toast.error(error.response?.data?.message || 'Login failed');
+      console.error('Login error:', error);
+      console.error('Error response:', error.response);
+      console.error('Error message:', error.message);
+      
+      let errorMessage = 'Login failed';
+      
+      if (error.response) {
+        // Server responded with error status
+        errorMessage = error.response.data?.message || `Server error: ${error.response.status}`;
+      } else if (error.request) {
+        // Request was made but no response received
+        errorMessage = 'No response from server. Please check your connection.';
+      } else {
+        // Something else happened
+        errorMessage = error.message || 'An unexpected error occurred';
+      }
+      
+      setError(errorMessage);
+      toast.error(errorMessage);
     } finally {
       setLoading(false);
     }

@@ -1,13 +1,18 @@
 import axios from 'axios';
 
-const API_URL = 'http://api.smartestmenu.com/api';
+// Use relative URL for development (will be proxied by Vite)
+// In production, this will need to be the full URL
+const API_URL = import.meta.env.DEV ? '/api' : 'http://api.smartestmenu.com/api';
+
+console.log('API URL:', API_URL); // Debug log
 
 // Create axios instance
 const api = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  timeout: 10000, // 10 second timeout
 });
 
 // Add request interceptor for authentication
@@ -17,17 +22,31 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    console.log('Request config:', config); // Debug log
     return config;
   },
   (error) => {
+    console.error('Request error:', error); // Debug log
     return Promise.reject(error);
   }
 );
 
 // Add response interceptor for error handling
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    console.log('Response:', response); // Debug log
+    return response;
+  },
   (error) => {
+    console.error('Response error:', error); // Debug log
+    console.error('Error details:', {
+      message: error.message,
+      status: error.response?.status,
+      statusText: error.response?.statusText,
+      data: error.response?.data,
+      config: error.config
+    });
+    
     if (error.response?.status === 401) {
       // Handle unauthorized access
       localStorage.removeItem('token');
