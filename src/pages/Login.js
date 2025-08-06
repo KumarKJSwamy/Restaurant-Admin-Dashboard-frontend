@@ -21,6 +21,17 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
+  React.useEffect(() => {
+    fetch('https://dummyjson.com/products')
+      .then(res => res.json())
+      .then(data => {
+        console.log('DummyJSON products data:', data);
+      })
+      .catch(err => {
+        console.error('Error fetching DummyJSON products:', err);
+      });
+  }, []);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
