@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Use relative URL for development (will be proxied by Vite)
 // In production, this will need to be the full URL
-const API_URL = import.meta.env.DEV ? '/api' : 'http://api.smartestmenu.com/api';
+const API_URL = import.meta.env.DEV ? '/api' : 'https://restaurant-admin-dashboard-backend.vercel.app/api';
 
 console.log('API URL:', API_URL); // Debug log
 
