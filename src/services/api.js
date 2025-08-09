@@ -1,10 +1,12 @@
 import axios from 'axios';
+import { currentConfig } from '../config/config';
 
-// Use relative URL for development (will be proxied by Vite)
-// In production, this will need to be the full URL
-const API_URL = import.meta.env.DEV ? '/api' : 'http://api.smartestmenu.com/api';
+// Use configuration from config file
+const API_URL = currentConfig.apiUrl;
 
-console.log('API URL:', API_URL); // Debug log
+console.log('Environment:', import.meta.env.MODE);
+console.log('API URL:', API_URL);
+console.log('Config:', currentConfig);
 
 // Create axios instance
 const api = axios.create({
@@ -12,7 +14,13 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json'
   },
-  timeout: 10000, // 10 second timeout
+  timeout: currentConfig.timeout,
+  // Allow non-secure connections for HTTP endpoints
+  httpsAgent: null,
+  // Disable SSL verification for HTTP endpoints
+  validateStatus: function (status) {
+    return status >= 200 && status < 600; // Accept all status codes to handle errors properly
+  }
 });
 
 // Add request interceptor for authentication

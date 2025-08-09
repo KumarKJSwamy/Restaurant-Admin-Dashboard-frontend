@@ -22,6 +22,50 @@ const Login = () => {
   const [error, setError] = useState('');
 
   React.useEffect(() => {
+    // Test API connectivity
+    console.log('Testing API connectivity...');
+    
+    // Test the actual API endpoint
+    fetch('http://api.smartestmenu.com/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: 'test@test.com', password: 'test' })
+    })
+    .then(res => {
+      console.log('Direct API test response status:', res.status);
+      console.log('Direct API test response headers:', res.headers);
+      return res.text();
+    })
+    .then(data => {
+      console.log('Direct API test response data:', data);
+    })
+    .catch(err => {
+      console.error('Direct API test error:', err);
+    });
+
+    // Test the proxy endpoint
+    fetch('/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: 'test@test.com', password: 'test' })
+    })
+    .then(res => {
+      console.log('Proxy API test response status:', res.status);
+      console.log('Proxy API test response headers:', res.headers);
+      return res.text();
+    })
+    .then(data => {
+      console.log('Proxy API test response data:', data);
+    })
+    .catch(err => {
+      console.error('Proxy API test error:', err);
+    });
+
+    // Test DummyJSON for comparison
     fetch('https://dummyjson.com/products')
       .then(res => res.json())
       .then(data => {
