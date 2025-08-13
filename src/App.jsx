@@ -95,6 +95,8 @@ const theme = createTheme({
 });
 
 function App() {
+
+  console.log("hi")
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
