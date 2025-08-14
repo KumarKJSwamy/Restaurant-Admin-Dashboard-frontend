@@ -26,7 +26,7 @@ const Login = () => {
     console.log('Testing API connectivity...');
     
     // Test the actual API endpoint
-    fetch('http://api.smartestmenu.com/api/auth/login', {
+    fetch('https://api.smartestmenu.com/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

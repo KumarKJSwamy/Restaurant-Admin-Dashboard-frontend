@@ -6,7 +6,7 @@ const config = {
     secure: false
   },
   production: {
-    apiUrl: 'http://api.smartestmenu.com/api',
+    apiUrl: 'https://api.smartestmenu.com/api',
     timeout: 10000,
     secure: false
   }
@@ -20,3 +20,4 @@ export const currentConfig = config[env] || config.development;
 
 // Export all configs
 export default config;
+
